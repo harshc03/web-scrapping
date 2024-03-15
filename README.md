@@ -1,3 +1,5 @@
+To run Fast Api : uvicron api_name:app --reload
+
 # api.py 
 This is for amazon scraping takes search keyword as parameter & page length.
 
