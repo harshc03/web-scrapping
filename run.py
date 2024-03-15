@@ -157,7 +157,7 @@ os.environ["PATH"] += os.pathsep + os.path.dirname(driver_path)
 options = webdriver.FirefoxOptions()
 options.headless = True  # equivalent to '--headless' for Firefox
 
-keyword = 'milk'
+keyword = 'headphones'
 next_page = ''
 
 def scrape_flipkart(keyword, max_pages):
@@ -167,7 +167,7 @@ def scrape_flipkart(keyword, max_pages):
     wait = WebDriverWait(driver, 50)  # Use WebDriverWait for explicit waits
 
     try:
-        print("aaya flipkart-1")
+        # print("aaya flipkart-1")
         driver.get(web)
         driver.implicitly_wait(20) 
         # Wait for the search box to be present
@@ -179,7 +179,7 @@ def scrape_flipkart(keyword, max_pages):
         search_button.click()
         while page_number <= max_pages:
             scrape_page(driver)
-            print("aaya amazon-2")
+            # print("aaya amazon-2")
             
             # Wait for the next page link to be clickable
             
@@ -206,14 +206,14 @@ def scrape_page(driver):
     product_link = []
 
     # Wait for the items to be present
-    print("fatagaya-3")
+    # print("fatagaya-3")
     items = WebDriverWait(driver,5).until(EC.presence_of_all_elements_located((By.XPATH, '//div[contains(@class, "_1AtVbE col-12-12")]')))
     print(items)        
  # usko item nahi mil raha hai sir!! USKA XPATH GALAT HAI
     for item in items:
         try:
             # find name using text-based XPath
-            print("aaya-4")
+            # print("aaya-4")
             # name = item.find_element((By.XPATH, '//span[contains(@class, "a-text-normal")]'))
             # name = item.find_element(By.CSS_SELECTOR, 'span.a-text-normal')
             name = item.find_element(By.CSS_SELECTOR, '[title].s1Q9rs')

@@ -1,3 +1,9 @@
+# api.py 
+This is for amazon scraping takes search keyword as parameter & page length.
+
+# flipkart.py
+This is for flipkart similar to api.py.
+
 # Web scraping - Amazon product search result
 This project uses selenium for scraping multiple amazon product search result pages and then stores
 the items' data found into sqlite3 database.

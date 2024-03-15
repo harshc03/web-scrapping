@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
 app = FastAPI()
 origins = [
     "http://localhost.tiangolo.com",
@@ -25,7 +26,10 @@ app.add_middleware(
 )
 options = webdriver.FirefoxOptions()
 options.headless = True
+options.add_argument("--disable-gpu")  # Disable GPU acceleration
 
+# Set MOZ_HEADLESS environment variable
+os.environ['MOZ_HEADLESS'] = '1'
 def scrape_page(driver):
     product_data = []
 
@@ -85,7 +89,7 @@ def scrape_amazon_data(keyword, max_pages):
     page_number = 1
     data = []
 
-    driver = webdriver.Firefox(options=options)
+    driver = webdriver.Firefox(options=options) 
     wait = WebDriverWait(driver, 10)
 
     try:
